@@ -1,3 +1,6 @@
+import random
+
+
 def read_field(path):
     """
     (str) -> (data)
@@ -74,12 +77,22 @@ def field_to_str(data):
     (data) -> (str)
     Transform field to string
     """
-    field = "  " + "".join([chr(65+i) for i in range(10)])
+    field = "   " + "".join([chr(65 + i) for i in range(10)])
     for i in range(10):
         if i < 10:
-            field += "\n" + str(i+1) + " " + "".join(data[i])
+            field += "\n" + str(i + 1) + "  " + "".join(data[i])
         else:
-            field += "\n" + str(i + 1) + "".join(data[i])
+            field += "\n" + str(i + 1) + " " "".join(data[i])
     return field
+
+
+def generate_field():
+    """
+    () -> (data)
+    Create random field
+    """
+
+
+
 data = read_field("field.txt")
 print(field_to_str(data))
