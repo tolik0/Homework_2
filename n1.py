@@ -42,7 +42,7 @@ def ship_size(data, coor):
         if side == 2: side_h = 1
         if side == 3: side_h = -1
         # check if there is ship in neighbour cell
-        while 0 < coor0[0] + side_v < 10 and 0 < coor0[1] + side_h < 10 and \
+        while -1 < coor0[0] + side_v < 10 and -1 < coor0[1] + side_h < 10 and \
                 data[coor0[0] + side_v][coor0[1] + side_h] == "*":
             length += 1
             coor0 = [coor0[0] + side_v, coor0[1] + side_h]
@@ -69,6 +69,19 @@ def is_valid(data):
     for i in range(4):
         if check[i] != (i + 1) * (4 - i):
             return False
+    # check corners
+    for i in range(1, 10):
+        for j in range(10):
+            try:
+                if data[i - 1][j + 1] == "*" and data[i][j] == "*":
+                    return False
+            except:
+                pass
+            try:
+                if data[i - 1][j - 1] == "*" and data[i][j] == "*":
+                    return False
+            except:
+                pass
     return True
 
 
@@ -79,10 +92,10 @@ def field_to_str(data):
     """
     field = "   " + "".join([chr(65 + i) for i in range(10)])
     for i in range(10):
-        if i < 10:
+        if i < 9:
             field += "\n" + str(i + 1) + "  " + "".join(data[i])
         else:
-            field += "\n" + str(i + 1) + " " "".join(data[i])
+            field += "\n" + str(i + 1) + " " + "".join(data[i])
     return field
 
 
@@ -91,8 +104,20 @@ def generate_field():
     () -> (data)
     Create random field
     """
-
-
-
-data = read_field("field.txt")
-print(field_to_str(data))
+    data = [["~" for i in range(10)] for j in range(10)]
+    while not is_valid(data):
+        data = [["~" for i in range(10)] for j in range(10)]
+        x, y = 0, 0
+        for i in range(4):
+            for j in range(i + 1):
+                x, y = random.randint(0, 6 + i), random.randint(0, 6 + i)
+                while (data[x][y] == "*"):
+                    x, y = random.randint(0, 6 + i), random.randint(0, 6 + i)
+                n = random.randint(0, 1)
+                if n:
+                    for z in range(4 - i):
+                        data[x][y + z] = "*"
+                else:
+                    for z in range(4 - i):
+                        data[x + z][y] = "*"
+    return data
