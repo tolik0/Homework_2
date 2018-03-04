@@ -60,9 +60,6 @@ class Field:
                             # if ship is dead
                             data[i][j] = "k"
                         else:
-                            print(self.ships[i][j]._Ship__hit)
-                            print(self.ships[i][j]._Ship__hit)
-                            print(data[i][j]._Ship__length)
                             # if that part of ship is shooted
                             data[i][j] = "#"
                     else:
