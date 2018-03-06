@@ -7,4 +7,6 @@ class Ship:
 
     def shoot_at(self, coor):
         # choose in what side is ship
-        self.__hit[max(self.bow[0] - coor[0], self.bow[1]-coor[1])] = True
+        print(1)
+        self.__hit[max(coor[0] - self.bow[0], coor[1] - self.bow[1])] = True
+        print(coor, self.bow)
