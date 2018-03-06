@@ -117,20 +117,14 @@ class Field:
                         data[i][j] = "*"
         return n1.field_to_str(data)
 
-
-field1 = Field()
-# print(field1.ships)
-for i in range(10):
-    field1.shoot_at((0, i))
-for i in range(10):
-    field1.shoot_at((1, i))
-for i in range(10):
-    field1.shoot_at((2, i))
-print(field1.field_with_ships())
-print(field1.field_without_ships())
+# We can use it for testing
+# field1 = Field()
 # for i in range(10):
-#     for j in range(10):
-#         if type(field1.ships[i][j]) == Ship:
-#             print(field1.ships[i][j]._Ship__hit)
-#         else:
-#             print(type(field1.ships[i][j]))
+#     field1.shoot_at((0, i))
+# for i in range(10):
+#     field1.shoot_at((1, i))
+# for i in range(10):
+#     field1.shoot_at((2, i))
+# print(field1.field_with_ships())
+# print(field1.field_without_ships())
+
