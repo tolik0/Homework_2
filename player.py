@@ -7,12 +7,12 @@ class Player:
         x, y = -1, -1
         coor = input("Player {}, enter move: ".format(self.__name))
         try:
-            x = int(coor[1:])-1
-            y = ord(coor[0])-65
+            x = int(coor[1:]) - 1
+            y = ord(coor[0]) - 65
         except:
             pass
         # check coordinates
-        while not ( -1 < x < 10 and -1 < y < 10 ):
+        while not (-1 < x < 10 and -1 < y < 10):
             x, y = -1, -1
             coor = input("Player {}, enter move: ".format(self.__name))
             try:
@@ -21,4 +21,4 @@ class Player:
             except:
                 pass
 
-        return (int(coor[1:])-1, ord(coor[0])-65)
+        return (int(coor[1:]) - 1, ord(coor[0]) - 65)

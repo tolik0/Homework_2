@@ -16,7 +16,7 @@ class Field:
             for i in range(10):
                 for j in range(10):
                     if type(data[i][j]) == Ship:
-                        check[data[i][j]._Ship__length-1] += 1
+                        check[data[i][j]._Ship__length - 1] += 1
             # check ships
             for i in range(4):
                 if check[i] != (i + 1) * (4 - i):
@@ -84,7 +84,7 @@ class Field:
                 # if sheep is in that cell
                 if type(data[i][j]) == Ship:
                     # if that part of ship is shooted
-                    if data[i][j]._Ship__hit[max(i -data[i][j].bow[0],
+                    if data[i][j]._Ship__hit[max(i - data[i][j].bow[0],
                                                  j - data[i][j].bow[1])]:
                         if all(self.ships[i][j]._Ship__hit):
                             # if ship is dead
@@ -127,4 +127,3 @@ class Field:
 #     field1.shoot_at((2, i))
 # print(field1.field_with_ships())
 # print(field1.field_without_ships())
-
